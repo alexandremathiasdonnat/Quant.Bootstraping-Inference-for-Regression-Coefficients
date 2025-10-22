@@ -13,31 +13,31 @@ The bootstrap is a resampling method that estimates the sampling distribution of
 
 ## Mathematical Framework  
 We consider the linear model:
-$$
-y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \quad \varepsilon_i \sim \text{i.i.d.}(0, \sigma^2)
-$$
+
+    yᵢ = β₀ + β₁·xᵢ + εᵢ,   where  εᵢ ~ i.i.d.(0, σ²)
 
 The OLS estimators are:
-$$
-\hat{\beta}_1 = 
-\frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2},
-\quad
-\hat{\beta}_0 = \bar{y} - \hat{\beta}_1\bar{x}.
-$$
 
-To assess the sampling variability of $\hat{\beta}_1$, we apply the **bootstrap principle**:
-1. Resample $(x_i, y_i)$ pairs with replacement.  
-2. Recompute $\hat{\beta}_1^*$ for each bootstrap sample.  
-3. Repeat $B$ times (e.g. $B = 2000$) to approximate the sampling distribution of $\hat{\beta}_1$.
+    β̂₁ = Σ[(xᵢ − x̄)(yᵢ − ȳ)] / Σ[(xᵢ − x̄)²]
+    β̂₀ = ȳ − β̂₁·x̄
+
+To assess the sampling variability of β̂₁, we apply the bootstrap principle:
+1. Resample (xᵢ, yᵢ) pairs with replacement.  
+2. Recompute β̂₁* for each bootstrap sample.  
+3. Repeat B times (e.g. B = 2000) to approximate the sampling distribution of β̂₁.
+
 
 ---
 
 ## Inference  
-From the empirical distribution of $\hat{\beta}_1^*$:
-- **Normal CI:**  
-    $\hat{\beta}_1 \pm z_{1-\alpha/2} \cdot \text{SE}_{boot}$
-- **Percentile CI:**  
-    empirical quantiles of $\hat{\beta}_1^*$.
+From the empirical distribution of β̂₁*:
+
+- Normal CI:  
+  β̂₁ ± z₍₁₋ₐ/₂₎ · SE_boot
+
+- Percentile CI:  
+  empirical quantiles of β̂₁*.
+
 
 These intervals provide **non-parametric inference** and capture possible **asymmetry or skewness** in the sampling distribution.
 
